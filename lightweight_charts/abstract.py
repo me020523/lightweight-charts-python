@@ -580,7 +580,7 @@ class Histogram(SeriesCommon):
                 color: '{color}',
                 lastValueVisible: {jbool(price_label)},
                 priceLineVisible: {jbool(price_line)},
-                priceScaleId: {'{price_scale_id}' if price_scale_id else '{self.id}'},
+                priceScaleId: '{price_scale_id if price_scale_id else self.id}',
                 priceFormat: {{type: {'{price_format}' if price_format else 'volume'}}},
             }},
             // precision: 2,
