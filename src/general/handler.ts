@@ -211,6 +211,13 @@ export class Handler {
         const line = this.chart.addHistogramSeries({ ...options });
         this._seriesList.push(line);
         this.legend.makeSeriesRow(name, line);
+
+        if (options.priceFormat) {
+            this.series.applyOptions({
+                priceFormat: options.priceFormat,
+            });
+        }
+
         return {
             name: name,
             series: line,
