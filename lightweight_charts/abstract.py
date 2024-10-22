@@ -507,8 +507,8 @@ class Line(SeriesCommon):
                     lastValueVisible: {jbool(price_label)},
                     priceLineVisible: {jbool(price_line)},
                     crosshairMarkerVisible: {jbool(crosshair_marker)},
-                    priceFormat: {{type: '{price_format if price_format else "price"}', precision: 2, minMove: 0.01}}
-                    {"priceScaleId: '{price_scale_id}'," if price_scale_id else ""}
+                    priceFormat: {{type: '{price_format if price_format else "price"}'}},
+                    priceScaleId: '{price_scale_id if price_scale_id else ""}',
                     {"""autoscaleInfoProvider: () => ({
                             priceRange: {
                                 minValue: 1_000_000_000,
