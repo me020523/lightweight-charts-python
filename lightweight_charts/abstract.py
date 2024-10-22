@@ -507,8 +507,8 @@ class Line(SeriesCommon):
                     lastValueVisible: {jbool(price_label)},
                     priceLineVisible: {jbool(price_line)},
                     crosshairMarkerVisible: {jbool(crosshair_marker)},
-                    priceFormat: {{type: {'{price_format}' if price_format else 'price'}}},
-                    priceScaleId: {'{price_scale_id}' if price_scale_id else 'undefined'},
+                    priceFormat: {{type: '{price_format if price_format else "price"}', precision: 2, minMove: 0.01}}
+                    {"priceScaleId: '{price_scale_id}'," if price_scale_id else ""}
                     {"""autoscaleInfoProvider: () => ({
                             priceRange: {
                                 minValue: 1_000_000_000,
@@ -518,7 +518,7 @@ class Line(SeriesCommon):
                     """ if chart._scale_candles_only else ''}
                 }}
             )
-        null'''
+        '''
         )
 
     # def _set_trend(self, start_time, start_value, end_time, end_value, ray=False, round=False):
