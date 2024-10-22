@@ -563,10 +563,10 @@ class Histogram(SeriesCommon):
         color,
         price_line,
         price_label,
+        price_format,
+        price_scale_id,
         scale_margin_top,
         scale_margin_bottom,
-        price_scale_id,
-        price_format,
     ):
         super().__init__(chart, name)
         self.color = color
@@ -873,6 +873,8 @@ class AbstractChart(Candlestick, Pane):
         color: str = "rgba(214, 237, 255, 0.6)",
         price_line: bool = True,
         price_label: bool = True,
+        price_format: str = "volume",
+        price_scale_id: Optional[str] = None,
         scale_margin_top: float = 0.0,
         scale_margin_bottom: float = 0.0,
     ) -> Histogram:
@@ -885,6 +887,8 @@ class AbstractChart(Candlestick, Pane):
             color,
             price_line,
             price_label,
+            price_format,
+            price_scale_id,
             scale_margin_top,
             scale_margin_bottom,
         )
