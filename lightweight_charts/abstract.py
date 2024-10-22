@@ -488,6 +488,7 @@ class Line(SeriesCommon):
         width,
         price_line,
         price_label,
+        price_format,
         price_scale_id=None,
         crosshair_marker=True,
     ):
@@ -506,6 +507,7 @@ class Line(SeriesCommon):
                     lastValueVisible: {jbool(price_label)},
                     priceLineVisible: {jbool(price_line)},
                     crosshairMarkerVisible: {jbool(crosshair_marker)},
+                    priceFormat: {{type: {f'"{price_format}"' if price_format else 'price'}}},
                     priceScaleId: {f'"{price_scale_id}"' if price_scale_id else 'undefined'}
                     {"""autoscaleInfoProvider: () => ({
                             priceRange: {
@@ -855,6 +857,7 @@ class AbstractChart(Candlestick, Pane):
         width: int = 2,
         price_line: bool = True,
         price_label: bool = True,
+        price_format: str = "price",
         price_scale_id: Optional[str] = None,
     ) -> Line:
         """
@@ -862,7 +865,15 @@ class AbstractChart(Candlestick, Pane):
         """
         self._lines.append(
             Line(
-                self, name, color, style, width, price_line, price_label, price_scale_id
+                self,
+                name,
+                color,
+                style,
+                width,
+                price_line,
+                price_label,
+                price_format,
+                price_scale_id,
             )
         )
         return self._lines[-1]
