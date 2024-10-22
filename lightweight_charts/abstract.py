@@ -507,8 +507,8 @@ class Line(SeriesCommon):
                     lastValueVisible: {jbool(price_label)},
                     priceLineVisible: {jbool(price_line)},
                     crosshairMarkerVisible: {jbool(crosshair_marker)},
-                    priceFormat: {{type: {f'"{price_format}"' if price_format else 'price'}}},
-                    priceScaleId: {f'"{price_scale_id}"' if price_scale_id else 'undefined'}
+                    priceFormat: {{type: {'{price_format}' if price_format else 'price'}}},
+                    priceScaleId: {'{price_scale_id}' if price_scale_id else 'undefined'},
                     {"""autoscaleInfoProvider: () => ({
                             priceRange: {
                                 minValue: 1_000_000_000,
@@ -580,8 +580,8 @@ class Histogram(SeriesCommon):
                 color: '{color}',
                 lastValueVisible: {jbool(price_label)},
                 priceLineVisible: {jbool(price_line)},
-                priceScaleId: {f'"{price_scale_id}"' if price_scale_id else '"{self.id}"'},
-                priceFormat: {{type: {f'"{price_format}"' if price_format else 'volume'}}},
+                priceScaleId: {'{price_scale_id}' if price_scale_id else '{self.id}'},
+                priceFormat: {{type: {'{price_format}' if price_format else 'volume'}}},
             }},
             // precision: 2,
         )
